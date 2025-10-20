@@ -1,0 +1,65 @@
+1a)
+
+#include <iostream>
+using namespace std;
+int fact(int n);
+int main()
+{
+    int n;
+    cout << "Enter n value: ";
+    cin >> n;
+    int result = fact(n);
+    if (result == -1)
+        cout << "Factorial is not defined" << endl;
+    else
+        cout << "Factorial: " << result << endl;
+    return 0;
+}
+
+int fact(int n)
+{
+    if (n < 0)
+        return -1;
+    else if (n == 0 || n == 1)
+        return 1; 
+    else
+        return n * fact(n - 1);
+}
+
+
+
+
+
+1b)
+
+
+#include <iostream>
+using namespace std;
+// Function to demonstrate Call by Value
+void callByValue(int x) 
+{
+    x = x + 10;
+    cout << "Inside callByValue, x = " << x << endl;
+}
+// Function to demonstrate Call by Reference
+void callByReference(int &y) 
+{
+    y = y + 10;
+    cout << "Inside callByReference, y = " << y << endl;
+}
+int main() 
+{
+    int a = 5, b = 5;
+    cout << "Before callByValue, a = " << a << endl;
+    callByValue(a);
+    cout << "After callByValue, a = " << a << endl << endl;
+    cout << "Before callByReference, b = " << b << endl;
+    callByReference(b);
+    cout << "After callByReference, b = " << b << endl;
+    return 0;
+}
+
+
+
+
+
