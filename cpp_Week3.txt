@@ -1,0 +1,136 @@
+3a)
+
+#include <iostream>
+#include <string>
+using namespace std;
+class Bank
+ {
+private:
+    int accnum;
+    string name;
+    double balance;
+public:
+    Bank(int accno, string acname, double bal) 
+{
+        accnum = accno;
+        name = acname;
+        balance = bal;
+    }
+    string deposit(double amt) 
+{
+        if (amt > 0)
+ {
+            balance += amt;
+            return "Deposited successfully.\nCurrent Balance: " + std::to_string(balance) + "\n";
+        } 
+else
+ {
+            return "Deposit failed. Amount must be positive.\nCurrent Balance: " + std::to_string(balance) + "\n";
+        }
+    }
+    string withdraw(double amt)
+ {
+        if (amt > 0 && amt <= balance)
+ {
+            balance -= amt;
+            return "Withdrawal successful.\nCurrent Balance: " + std::to_string(balance) + "\n";
+        } else {
+            return "Withdrawal failed. Insufficient balance or invalid amount.\nCurrent Balance: " + std::to_string(balance) + "\n";
+        }
+    }
+   string dispbalance() {
+        return "Acc ID: " + std::to_string(accnum) + "\nAcc Name: " + name + "\nAcc Balance: " + std::to_string(balance) + "\n";
+    }
+};
+int main() 
+{
+    Bank bank(123, "Venkat", 50000.0);
+    cout << "**** Account Details ****\n" << bank.dispbalance();
+    cout << "\n";
+    cout << "**** Depositing ****\n" << bank.deposit(1200.0);
+    cout << "\n";
+    cout << "**** Withdrawing ****\n" << bank.withdraw(2000.0);
+    cout << "\n";
+    return 0;
+}
+
+
+
+
+
+
+
+3b)
+
+#include <iostream>
+using namespace std;
+class Student {
+private:
+    string name;
+    int rollNo;
+public:
+    // Public method to set private data
+    void setData(string n, int r) {
+        name = n;
+        rollNo = r;
+    }
+  // Public method to display private data
+    void displayData() {
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << rollNo << endl;
+    }
+};
+int main() {
+    Student s1;
+    // Set data using public function
+    s1.setData("Satya Sree", 180);
+    // Display data using public function
+    s1.displayData();
+    // Direct access to private members (INVALID)
+    // s1.name = "Test";       // ❌ Error: 'name' is private
+    // s1.rollNo = 101;        // ❌ Error: 'rollNo' is private
+    return 0;
+}
+
+
+
+
+3c)
+
+#include <iostream>
+using namespace std;
+class Student
+ {
+private:
+    int id;
+    string name;
+public:
+    // Constructor using this pointer
+    Student(int id, string name) 
+   {
+        this->id = id;         // Resolves conflict
+        this->name = name;
+    }
+    // Member function returning current object using this pointer
+    Student& updateName(string name) 
+   {
+        this->name = name;
+        return *this;
+    }
+    void display() 
+{
+        cout << "ID: " << this->id << endl;
+        cout << "Name: " << this->name << endl;
+    }
+};
+int main()
+ {
+    Student s1(101, "Ravi");
+    cout << "Before updating name:\n";
+    s1.display();
+    s1.updateName("Kiran");
+    cout << "\nAfter updating name:\n";
+    s1.display();
+    return 0;
+} 
+
