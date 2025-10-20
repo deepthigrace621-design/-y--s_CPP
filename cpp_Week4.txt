@@ -1,0 +1,82 @@
+4a)
+
+#include <iostream>
+using namespace std;
+// Function to add two integers
+int add(int a, int b) {
+    return a + b;
+}
+// Function to add two floating-point numbers
+float add(float a, float b) {
+    return a + b;
+}
+// Function to add three integers
+int add(int a, int b, int c) {
+    return a + b + c;
+}
+int main() {
+    cout << "Addition of two integers (3 + 4): " << add(3, 4) << endl;
+    cout << "Addition of two floats (2.5 + 3.5): " << add(2.5f, 3.5f) << endl;
+    cout << "Addition of three integers (1 + 2 + 3): " << add(1, 2, 3) << endl;
+    return 0;
+}
+
+
+
+
+4b)
+
+#include <iostream>
+using namespace std;
+// Function with default arguments
+int multiply(int a, int b = 2, int c = 3) 
+{
+    return a * b * c;
+}
+int main() 
+{
+    cout << "Calling multiply(5): " << multiply(5) << endl;           // uses b=2, c=3
+    cout << "Calling multiply(5, 4): " << multiply(5, 4) << endl;     // uses c=3
+    cout << "Calling multiply(5, 4, 2): " << multiply(5, 4, 2) << endl; // uses all provided
+    return 0;
+}
+
+
+
+
+4c)
+
+#include <iostream>
+using namespace std;
+class Student
+ {
+private:
+    string name;
+    int mark1, mark2;
+public:
+    // Constructor to initialize data
+    Student(string n, int m1, int m2)
+    {
+        name = n;
+        mark1 = m1;
+        mark2 = m2;
+    }
+    // Friend function declaration
+    friend void calculateAverage(Student s);
+};
+// Friend function definition
+void calculateAverage(Student s) 
+{
+    float avg = (s.mark1 + s.mark2) / 2.0;
+    cout << "Student Name: " << s.name << endl;
+    cout << "Average Marks: " << avg << endl;
+}
+// Main function
+int main() 
+{
+    Student s1("Ananya", 85, 90); 
+    // Friend function call
+    calculateAverage(s1);
+    return 0;
+}
+
