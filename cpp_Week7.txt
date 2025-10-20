@@ -1,0 +1,118 @@
+7a)
+
+#include <iostream>
+using namespace std;
+
+class Device {
+public:
+    void powerOn() {
+        cout << "Device powered on." << endl;
+    }
+};
+
+class Computer : public Device {
+public:
+    void compute() {
+        cout << "Computer is computing." << endl;
+    }
+}
+
+class Printer {
+public:
+    void print() {
+        cout << "Printer is printing a document." << endl;
+    }
+};
+
+class Scanner {
+public:
+    void scan() {
+        cout << "Scanner is scanning a document." << endl;
+    }
+};
+
+class Laptop : public Computer {
+public:
+    void portableMode() {
+        cout << "Laptop is in portable mode." << endl;
+    }
+};
+
+class Tablet : public Device {
+public:
+    void touchInput() {
+        cout << "Tablet touch input activated." << endl;
+    }
+};
+
+class AllInOne : public Printer, public Scanner, public Computer {
+public:
+    void allFeatures() {
+        cout << "AllInOne device running all features." << endl;
+    }
+};
+int main() 
+{
+    cout << "--- Single Inheritance ---" << endl;
+    Computer comp;
+    comp.powerOn();   
+    comp.compute();
+
+    cout << "\n--- Multiple Inheritance (AllInOne) ---" << endl;
+    AllInOne aio;
+    aio.powerOn();     
+    aio.print();       
+    aio.scan();       
+    aio.compute();     
+    aio.allFeatures();
+
+    cout << "\n--- Multilevel Inheritance ---" << endl;
+    Laptop lap;
+    lap.powerOn();    
+    lap.compute();
+    lap.portableMode();
+
+    cout << "\n--- Hierarchical Inheritance ---" << endl;
+    Tablet tab;
+    tab.powerOn();    
+    tab.touchInput();
+    return 0;
+}
+
+
+
+
+
+7b)
+
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    Base() {
+        cout << "Base class constructor called." << endl;
+    }
+
+    ~Base() {
+        cout << "Base class destructor called." << endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    Derived() {
+        cout << "Derived class constructor called." << endl;
+    }
+
+    ~Derived() {
+        cout << "Derived class destructor called." << endl;
+    }
+};
+
+int main() {
+    cout << "Creating Derived class object:" << endl;
+    Derived obj;
+    cout << "Program is ending." << endl;
+    return 0;
+}
