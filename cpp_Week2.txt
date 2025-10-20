@@ -1,0 +1,45 @@
+2a)
+
+#include <iostream>
+using namespace std;
+int value = 10; // Global variable
+namespace Demo 
+{
+    int value = 20; // Variable inside namespace
+}
+int main() 
+{
+    int value = 30; // Local variable
+    cout << "Local value: " << value << endl;         // Local variable
+    cout << "Namespace value: " << Demo::value << endl; // Namespace variable
+    cout << "Global value: " << ::value << endl;      // Global variable using scope resolution
+    return 0;
+}
+
+
+
+
+
+2b)
+
+#include <iostream>
+using namespace std;
+// Inline function for calculating square
+inline int square(int x) 
+{
+    return x * x;
+}
+// Inline function for calculating cube
+inline int cube(int x)
+ {
+    return x * x * x;
+}
+int main() 
+{
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    cout << "Square of " << num << " is: " << square(num) << endl;
+    cout << "Cube of " << num << " is: " << cube(num) << endl;
+  return 0;
+}
