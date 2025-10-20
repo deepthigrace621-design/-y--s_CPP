@@ -1,0 +1,94 @@
+5a)
+
+#include <iostream>
+using namespace std;
+class MyClass {
+public:
+// Constructor
+MyClass() {
+cout << "Constructor: Object is created." << endl;}
+// Destructor
+~MyClass() {
+cout << "Destructor: Object is destroyed." << endl;}};
+int main()
+{
+MyClass obj; // Constructor is called here
+cout << "Inside main function." << endl;
+return 0;
+}
+
+
+
+
+
+5b)
+
+#include <iostream>
+using namespace std;
+class Student {
+private:
+string name;
+int age;
+public:
+Student()
+{
+name = "sitha";
+age = 19;
+}
+Student(string n) {
+name = n;
+age = 10;
+}
+Student(string n, int a) {
+name = n;
+age = a;
+}
+void display() {
+cout << "Name: " << name << ", Age: " << age << endl;
+}
+};
+int main() {
+Student s1;
+Student s2("sam");
+Student s3("ram", 20);
+s1.display();
+s2.display();
+s3.display();
+return 0;
+}
+
+
+
+
+
+5c)
+
+#include <iostream>
+using namespace std;
+class Student {
+private:
+string name;
+int age;
+public:
+// Parameterized constructor
+Student(string n, int a) {
+name = n;
+age = a;
+cout << "Parameterized constructor called!" << endl;}
+// Copy constructor
+Student(const Student &s) {
+name = s.name;
+age = s.age;
+cout << "Copy constructor called!" << endl;
+}
+// Display function
+void display() {
+cout << "Name: " << name << ", Age: " << age << endl;}
+};
+int main() {
+Student s1("mouni", 19);
+s1.display();
+Student s2 = s1; // Copy constructor is called
+s2.display();
+return 0;
+}
