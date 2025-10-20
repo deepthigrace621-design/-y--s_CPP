@@ -1,0 +1,100 @@
+8a)
+
+#include <iostream>
+#include <string>
+using namespace std;
+class Student
+{
+private:
+    string name;
+    int age;
+public:
+    Student(string n = "unknown", int a = 0)
+    {
+        name = n;
+        age = a;
+    }
+    void setName(string n)
+    {
+        name = n;
+    }
+    void setAge(int a)
+    {
+        age = a;
+    }
+    void display(string msg)
+    {
+        cout << msg << " Name: " << name << " Age: " << age << endl;
+    }
+};
+int main()
+{
+    Student s1("satya", 18);
+    Student* ptr = &s1;
+    ptr->display("Assigning By object:");
+    ptr->setAge(20);
+    ptr->display("From setters: ");
+    Student* s2 = new Student("sree", 19);
+    s2->display("Dynamic object: ");
+    delete s2;
+    return 0;
+}
+
+
+
+
+
+
+8b)
+
+#include <iostream>
+using namespace std;
+class Person 
+{
+public:
+    string name;
+    Person() 
+	{
+        cout << "Person constructor called." << endl;
+        name = "Unknown";
+    }
+    void display() 
+	{
+        cout << "Name: " << name << endl;
+    }
+};
+class Employee : virtual public Person 
+{
+public:
+    Employee() 
+	{
+        cout << "Employee constructor called." << endl;
+    }
+};
+class Student : virtual public Person 
+{
+public:
+    Student() 
+	{
+        cout << "Student constructor called." << endl;
+    }
+};
+class WorkingStudent : public Employee, public Student 
+{
+public:
+    WorkingStudent() 
+	{
+        cout << "WorkingStudent constructor called." << endl;
+    }
+    void setName(const string& n) 
+	{
+        name = n; 
+    }
+};
+int main() 
+{
+    WorkingStudent ws;
+    ws.setName("John Doe");
+    ws.display();
+    return 0;
+}
